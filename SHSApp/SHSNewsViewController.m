@@ -1,18 +1,18 @@
 //
-//  SHSDirectoryViewController.m
+//  SHSNewsViewController.m
 //  SHSApp
 //
-//  Created by Spencer Yen on 8/6/14.
+//  Created by Spencer Yen on 8/7/14.
 //  Copyright (c) 2014 Spencer Yen. All rights reserved.
 //
 
-#import "SHSDirectoryViewController.h"
+#import "SHSNewsViewController.h"
 
-@interface SHSDirectoryViewController ()
+@interface SHSNewsViewController ()
 
 @end
 
-@implementation SHSDirectoryViewController
+@implementation SHSNewsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +45,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 
 #pragma mark - Table view data source

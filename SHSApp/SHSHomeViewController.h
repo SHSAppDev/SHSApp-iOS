@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+
 
 @interface SHSHomeViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *announcementsContainer;
+@property (weak, nonatomic) IBOutlet UIView *calendarContainer;
 
 @end

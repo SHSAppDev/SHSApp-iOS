@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHSBellScheduleViewController : UIViewController
+@interface SHSBellScheduleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

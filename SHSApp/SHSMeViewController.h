@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHSMeViewController : UIViewController
+@interface SHSMeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

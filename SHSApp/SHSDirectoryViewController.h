@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHSDirectoryViewController : UIViewController
+@interface SHSDirectoryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
