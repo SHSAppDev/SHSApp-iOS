@@ -154,6 +154,16 @@
     
 }
 
+-(NSDate *)getEndTime {
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    
+    NSDate *now = [NSDate date];
+    [query whereKey:@"endTime" greaterThan:now];
+    [query orderByAscending:@"endTime"];
+    NSDate *endTime = [[query findObjects] firstObject];
+    return endTime;
+    //this will return like a day in 2018, just ignore, only parse the actual 24 hour time.
+}
 - (id)initWithCoder:(NSCoder *)aCoder
 {
     self = [super initWithCoder:aCoder];

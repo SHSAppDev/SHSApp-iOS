@@ -7,13 +7,15 @@
 //
 
 #import "SHSDirectoryViewController.h"
-#import "SHSStaffTableViewCell.h"
-
+#import "SHSDirectoryTableViewCell.h"
+#import "SHSStaffDetailViewController.h"
 @interface SHSDirectoryViewController ()
 
 @end
 
-@implementation SHSDirectoryViewController
+@implementation SHSDirectoryViewController {
+    PFObject *selectedStaff;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.separatorInset = UIEdgeInsetsZero;
+
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     
     self.tableView.tableHeaderView = self.searchBar;
@@ -73,11 +77,11 @@
 }
 
 
-- (void)callbackWithResult:(NSArray *)celebrities error:(NSError *)error
+- (void)callbackWithResult:(NSArray *)teachers error:(NSError *)error
 {
     if(!error) {
         [self.searchResults removeAllObjects];
-        [self.searchResults addObjectsFromArray:celebrities];
+        [self.searchResults addObjectsFromArray:teachers];
         [self.searchDisplayController.searchResultsTableView reloadData];
     }
 }
@@ -88,7 +92,7 @@
     if (self) {
         // The className to query on
         self.parseClassName = @"Staff";
-        self.pullToRefreshEnabled = YES;
+        self.pullToRefreshEnabled = NO;
         self.paginationEnabled = NO;
         
         
@@ -99,6 +103,7 @@
 - (PFQuery *)queryForTable
 {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    query.limit = 1000;
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     [query orderByAscending:@"Name"];
@@ -108,8 +113,7 @@
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
-    
-    
+
     [self.tableView reloadData];
 }
 
@@ -135,32 +139,54 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
-    NSString *uniqueIdentifier = @"StaffCell";
-    SHSStaffTableViewCell *cell = nil;
+    NSString *uniqueIdentifier = @"DirectoryCell";
+    SHSDirectoryTableViewCell *cell = nil;
     
-    cell = (SHSStaffTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:uniqueIdentifier];
+    cell = (SHSDirectoryTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:uniqueIdentifier];
     
     if (cell == nil) {
         
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SHSStaffTableViewCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SHSDirectoryTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         
     }
-
    
     if (tableView != self.searchDisplayController.searchResultsTableView) {
-       // cell.nameLabel.text = [object objectForKey:@"Name"];
+        cell.nameLabel.text = [object objectForKey:@"Name"];
         cell.typeLabel.text = [object objectForKey:@"Type"];
 
     }
     if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
         
         PFObject *obj2 = [self.searchResults objectAtIndex:indexPath.row];
-      //  cell.nameLabel.text = [obj2 objectForKey:@"Name"];
+        cell.nameLabel.text = [obj2 objectForKey:@"Name"];
         cell.typeLabel.text = [obj2 objectForKey:@"Type"];
 
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView != self.searchDisplayController.searchResultsTableView) {
+        selectedStaff = [self.objects objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"PushStaffDetail" sender:self];
+    }
+    if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        
+        selectedStaff = [self.searchResults objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"PushStaffDetail" sender:self];
+
+        
+    }
+}
+
+ #pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SHSStaffDetailViewController *detail = [segue destinationViewController];
+    detail.staffInfo = selectedStaff;
+    
 }
 
 @end

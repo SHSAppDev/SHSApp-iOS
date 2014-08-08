@@ -16,8 +16,6 @@
 		6C4FB325199373E500084B82 /* meTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4FB321199373E500084B82 /* meTab@2x.png */; };
 		6C4FB3291993749200084B82 /* homeTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4FB3281993749200084B82 /* homeTab@2x.png */; };
 		6C4FB32F1993755800084B82 /* SHSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4FB32E1993755800084B82 /* SHSNewsViewController.m */; };
-		6C50F6E51994AA4E008CB51D /* SHSStaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C50F6E31994AA4E008CB51D /* SHSStaffTableViewCell.m */; };
-		6C50F6E61994AA4E008CB51D /* SHSStaffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C50F6E41994AA4E008CB51D /* SHSStaffTableViewCell.xib */; };
 		6C6E5B2E199301FE00B26782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6E5B2D199301FE00B26782 /* Foundation.framework */; };
 		6C6E5B30199301FE00B26782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6E5B2F199301FE00B26782 /* CoreGraphics.framework */; };
 		6C6E5B32199301FE00B26782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6E5B31199301FE00B26782 /* UIKit.framework */; };
@@ -49,6 +47,10 @@
 		B2E98A561994F84400FA153B /* Naviancelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E98A541994F84400FA153B /* Naviancelogo.png */; };
 		B2E98A571994F84400FA153B /* canvas.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E98A551994F84400FA153B /* canvas.png */; };
 		B2E98A5B1994FA2700FA153B /* Access-256 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = B2E98A5A1994FA2700FA153B /* Access-256 (1).png */; };
+		6CCE26941994B3F100FC4A5B /* SHSDirectoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE26921994B3F100FC4A5B /* SHSDirectoryTableViewCell.m */; };
+		6CCE26951994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCE26931994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib */; };
+		6CCE26971994B86C00FC4A5B /* blank_profile_public@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CCE26961994B86C00FC4A5B /* blank_profile_public@2x.png */; };
+		6CCE269A1994B93600FC4A5B /* SHSStaffDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE26991994B93600FC4A5B /* SHSStaffDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +75,6 @@
 		6C4FB3281993749200084B82 /* homeTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeTab@2x.png"; sourceTree = "<group>"; };
 		6C4FB32D1993755800084B82 /* SHSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSNewsViewController.h; sourceTree = "<group>"; };
 		6C4FB32E1993755800084B82 /* SHSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSNewsViewController.m; sourceTree = "<group>"; };
-		6C50F6E21994AA4E008CB51D /* SHSStaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSStaffTableViewCell.h; sourceTree = "<group>"; };
-		6C50F6E31994AA4E008CB51D /* SHSStaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSStaffTableViewCell.m; sourceTree = "<group>"; };
-		6C50F6E41994AA4E008CB51D /* SHSStaffTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSStaffTableViewCell.xib; sourceTree = "<group>"; };
 		6C6E5B2A199301FE00B26782 /* SHSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C6E5B2D199301FE00B26782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6C6E5B2F199301FE00B26782 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,6 +100,7 @@
 		6C6E5B6C19932D6100B26782 /* SHSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSMeViewController.m; sourceTree = "<group>"; };
 		6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSDirectoryViewController.h; sourceTree = "<group>"; };
 		6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSDirectoryViewController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		B244A8CF1994DF36002E7B53 /* IDMCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMCaptionView.h; sourceTree = "<group>"; };
 		B244A8D01994DF36002E7B53 /* IDMCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDMCaptionView.m; sourceTree = "<group>"; };
 		B244A8D11994DF36002E7B53 /* IDMPBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDMPBConstants.h; sourceTree = "<group>"; };
@@ -123,6 +123,14 @@
 		B2E98A541994F84400FA153B /* Naviancelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Naviancelogo.png; sourceTree = "<group>"; };
 		B2E98A551994F84400FA153B /* canvas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canvas.png; sourceTree = "<group>"; };
 		B2E98A5A1994FA2700FA153B /* Access-256 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Access-256 (1).png"; sourceTree = "<group>"; };
+=======
+		6CCE26911994B3F100FC4A5B /* SHSDirectoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSDirectoryTableViewCell.h; sourceTree = "<group>"; };
+		6CCE26921994B3F100FC4A5B /* SHSDirectoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSDirectoryTableViewCell.m; sourceTree = "<group>"; };
+		6CCE26931994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSDirectoryTableViewCell.xib; sourceTree = "<group>"; };
+		6CCE26961994B86C00FC4A5B /* blank_profile_public@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank_profile_public@2x.png"; sourceTree = "<group>"; };
+		6CCE26981994B93600FC4A5B /* SHSStaffDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSStaffDetailViewController.h; sourceTree = "<group>"; };
+		6CCE26991994B93600FC4A5B /* SHSStaffDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSStaffDetailViewController.m; sourceTree = "<group>"; };
+>>>>>>> FETCH_HEAD
 		C1211A730D5B476EBA19EDFF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DB8D8A52036F44619AD97A0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -195,9 +203,9 @@
 		6C50F6E71994AA54008CB51D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6C50F6E21994AA4E008CB51D /* SHSStaffTableViewCell.h */,
-				6C50F6E31994AA4E008CB51D /* SHSStaffTableViewCell.m */,
-				6C50F6E41994AA4E008CB51D /* SHSStaffTableViewCell.xib */,
+				6CCE26911994B3F100FC4A5B /* SHSDirectoryTableViewCell.h */,
+				6CCE26921994B3F100FC4A5B /* SHSDirectoryTableViewCell.m */,
+				6CCE26931994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -244,8 +252,7 @@
 				6C14ADD3199453FF0070405D /* Bell Tab */,
 				6C6E5B6B19932D6100B26782 /* SHSMeViewController.h */,
 				6C6E5B6C19932D6100B26782 /* SHSMeViewController.m */,
-				6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */,
-				6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */,
+				6CCE269B1994B93E00FC4A5B /* Directory */,
 				6C50F6E71994AA54008CB51D /* View */,
 				6C4FB32D1993755800084B82 /* SHSNewsViewController.h */,
 				6C4FB32E1993755800084B82 /* SHSNewsViewController.m */,
@@ -260,6 +267,7 @@
 		6C6E5B34199301FE00B26782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6CCE26961994B86C00FC4A5B /* blank_profile_public@2x.png */,
 				6C6E5B35199301FE00B26782 /* SHSApp-Info.plist */,
 				6C6E5B36199301FE00B26782 /* InfoPlist.strings */,
 				6C6E5B39199301FE00B26782 /* main.m */,
@@ -286,6 +294,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		B244A8E71994DF4D002E7B53 /* IDMPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +316,17 @@
 				B244A8DE1994DF36002E7B53 /* IDMZoomingScrollView.m */,
 			);
 			name = IDMPhotoBrowser;
+=======
+		6CCE269B1994B93E00FC4A5B /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */,
+				6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */,
+				6CCE26981994B93600FC4A5B /* SHSStaffDetailViewController.h */,
+				6CCE26991994B93600FC4A5B /* SHSStaffDetailViewController.m */,
+			);
+			name = Directory;
+>>>>>>> FETCH_HEAD
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,20 +408,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				B2E98A561994F84400FA153B /* Naviancelogo.png in Resources */,
 				B244A8E21994DF36002E7B53 /* IDMPhotoBrowser.bundle in Resources */,
 				6C6E5B49199301FE00B26782 /* Images.xcassets in Resources */,
 				B244A8E91994E032002E7B53 /* btnCamera@2x.png in Resources */,
 				B244A8E01994DF36002E7B53 /* IDMPBLocalizations.bundle in Resources */,
+=======
+				6CCE26951994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib in Resources */,
+				6C6E5B49199301FE00B26782 /* Images.xcassets in Resources */,
+				6CCE26971994B86C00FC4A5B /* blank_profile_public@2x.png in Resources */,
+>>>>>>> FETCH_HEAD
 				6C6E5B38199301FE00B26782 /* InfoPlist.strings in Resources */,
 				6C4FB325199373E500084B82 /* meTab@2x.png in Resources */,
 				6C4FB3291993749200084B82 /* homeTab@2x.png in Resources */,
 				6C6E5B41199301FE00B26782 /* Main.storyboard in Resources */,
 				B2E98A571994F84400FA153B /* canvas.png in Resources */,
 				6C4FB322199373E500084B82 /* bellTab@2x.png in Resources */,
+<<<<<<< HEAD
 				B2E98A511994E2FA00FA153B /* idCard.png in Resources */,
 				B2E98A5B1994FA2700FA153B /* Access-256 (1).png in Resources */,
 				6C50F6E61994AA4E008CB51D /* SHSStaffTableViewCell.xib in Resources */,
+=======
+>>>>>>> FETCH_HEAD
 				6C4FB323199373E500084B82 /* directoryTab@2x.png in Resources */,
 				B2E98A531994F76E00FA153B /* aeries.png in Resources */,
 				6C4FB31D1993731500084B82 /* newsTab@2x.png in Resources */,
@@ -462,15 +491,20 @@
 				6C6E5B3A199301FE00B26782 /* main.m in Sources */,
 				B244A8E51994DF36002E7B53 /* IDMTapDetectingView.m in Sources */,
 				6C6E5B3E199301FE00B26782 /* SHSAppDelegate.m in Sources */,
+				6CCE26941994B3F100FC4A5B /* SHSDirectoryTableViewCell.m in Sources */,
 				6C6E5B6A19932AFC00B26782 /* SHSBellScheduleViewController.m in Sources */,
 				6C6E5B6D19932D6100B26782 /* SHSMeViewController.m in Sources */,
+<<<<<<< HEAD
 				B244A8E61994DF36002E7B53 /* IDMZoomingScrollView.m in Sources */,
 				6C50F6E51994AA4E008CB51D /* SHSStaffTableViewCell.m in Sources */,
 				B244A8DF1994DF36002E7B53 /* IDMCaptionView.m in Sources */,
 				B244A8E31994DF36002E7B53 /* IDMPhotoBrowser.m in Sources */,
 				B244A8E11994DF36002E7B53 /* IDMPhoto.m in Sources */,
 				B244A8E41994DF36002E7B53 /* IDMTapDetectingImageView.m in Sources */,
+=======
+>>>>>>> FETCH_HEAD
 				6C6E5B7019932DB300B26782 /* SHSDirectoryViewController.m in Sources */,
+				6CCE269A1994B93600FC4A5B /* SHSStaffDetailViewController.m in Sources */,
 				6C4FB32F1993755800084B82 /* SHSNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

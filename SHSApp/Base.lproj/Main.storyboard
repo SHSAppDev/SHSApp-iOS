@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="618" y="-322"/>
         </scene>
-        <!--Directory View Controller-->
+        <!--Directory View Controller - Directory-->
         <scene sceneID="K9L-MM-n8c">
             <objects>
                 <tableViewController id="KmE-Z7-7jh" customClass="SHSDirectoryViewController" sceneMemberID="viewController">
@@ -35,6 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+<<<<<<< HEAD
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="StaffCell" rowHeight="48" id="IwP-he-oAD">
                                 <rect key="frame" x="0.0" y="86" width="320" height="48"/>
@@ -85,16 +86,94 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+=======
+>>>>>>> FETCH_HEAD
                         <connections>
                             <outlet property="dataSource" destination="KmE-Z7-7jh" id="Icm-qK-BfK"/>
                             <outlet property="delegate" destination="KmE-Z7-7jh" id="jQr-lN-vPY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qdy-Pm-X4l"/>
+                    <navigationItem key="navigationItem" title="Directory" id="qdy-Pm-X4l"/>
+                    <connections>
+                        <segue destination="T2h-t4-8Yl" kind="push" identifier="PushStaffDetail" id="6cP-vi-9gB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0x-Nd-odC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1741" y="390"/>
+        </scene>
+        <!--Staff Detail View Controller - Teacher-->
+        <scene sceneID="pGz-SQ-UTZ">
+            <objects>
+                <viewController id="T2h-t4-8Yl" customClass="SHSStaffDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aCD-oV-Uic">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lisa Cochrum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LXM-gB-IuP">
+                                <rect key="frame" x="24" y="251" width="272" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank_profile_public.png" id="so5-xf-60P">
+                                <rect key="frame" x="82" y="87" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n8D-YY-NJn">
+                                <rect key="frame" x="15" y="317" width="285" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.76231751820000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
+                                <state key="normal" title="Email: ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailAction:" destination="T2h-t4-8Yl" eventType="touchUpInside" id="f6f-SX-1So"/>
+                                </connections>
+                            </button>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VzL-Pt-eFJ">
+                                <rect key="frame" x="15" y="380" width="285" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.76231751820000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
+                                <state key="normal" title="Call:">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="callAction:" destination="T2h-t4-8Yl" eventType="touchUpInside" id="3RG-5l-zUS"/>
+                                </connections>
+                            </button>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ied-mj-Fbs">
+                                <rect key="frame" x="15" y="443" width="285" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.76231751820000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
+                                <state key="normal" title="Visit Website">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="websiteAction:" destination="T2h-t4-8Yl" eventType="touchUpInside" id="ffk-qq-R3I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Teacher" id="aIo-0h-wWf"/>
+                    <connections>
+                        <outlet property="callButton" destination="VzL-Pt-eFJ" id="45o-vz-PVi"/>
+                        <outlet property="emailButton" destination="n8D-YY-NJn" id="bNT-eW-kP5"/>
+                        <outlet property="nameLabel" destination="LXM-gB-IuP" id="mA8-Pg-3NP"/>
+                        <outlet property="profileImageView" destination="so5-xf-60P" id="qgk-mT-bQN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyU-EG-ft0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2137" y="390"/>
         </scene>
         <!--Bell Schedule View Controller-->
         <scene sceneID="DhJ-T5-dC8">
@@ -581,8 +660,12 @@
         <image name="Access-256 (1).png" width="256" height="256"/>
         <image name="Naviancelogo.png" width="147" height="143"/>
         <image name="bellTab.png" width="24" height="24"/>
+<<<<<<< HEAD
         <image name="btnCamera.png" width="77" height="77"/>
         <image name="canvas.png" width="122" height="122"/>
+=======
+        <image name="blank_profile_public.png" width="62" height="62"/>
+>>>>>>> FETCH_HEAD
         <image name="directoryTab.png" width="24" height="24"/>
         <image name="homeTab.png" width="24" height="24"/>
         <image name="idCard.png" width="511" height="326"/>
