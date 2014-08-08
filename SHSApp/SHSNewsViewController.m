@@ -12,7 +12,9 @@
 
 @end
 
-@implementation SHSNewsViewController
+@implementation SHSNewsViewController {
+    NSMutableData *_responseData;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,8 +28,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSString *urlString = [NSString stringWithFormat:@"http://www.saratogafalcon.org/ws"];
+    NSString *getStoryNids = @"get_story_nids";
+    NSString *storyType = @"spotlight";
+    NSString *parameterData = [NSString stringWithFormat:@"request_type=%@&story_type=%@&story_number=5", getStoryNids, storyType];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody:[parameterData dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+
+
+    
 }
+
+
+-(void) connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
+{
+    [_responseData setLength:0];
+}
+
+-(void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_responseData appendData:data];
+}
+
+-(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No Network Connection" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK",nil];
+    [alertView show];
+    
+    
+    return;
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *responseStringWithEncoded = [[NSString alloc] initWithData: _responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", responseStringWithEncoded);
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
