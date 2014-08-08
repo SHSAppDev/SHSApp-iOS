@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SHSBellScheduleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+#import <Parse/Parse.h>
+@interface SHSBellScheduleViewController : PFQueryTableViewController <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

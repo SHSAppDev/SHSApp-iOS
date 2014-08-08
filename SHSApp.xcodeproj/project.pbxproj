@@ -111,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C14ADD3199453FF0070405D /* Bell Tab */ = {
+			isa = PBXGroup;
+			children = (
+				6C6E5B6819932AFC00B26782 /* SHSBellScheduleViewController.h */,
+				6C6E5B6919932AFC00B26782 /* SHSBellScheduleViewController.m */,
+			);
+			name = "Bell Tab";
+			sourceTree = "<group>";
+		};
 		6C4FB3191993722100084B82 /* assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +130,19 @@
 				6C4FB321199373E500084B82 /* meTab@2x.png */,
 			);
 			name = assets;
+			sourceTree = "<group>";
+		};
+		6C4FB3D219941C3600084B82 /* Home Tab */ = {
+			isa = PBXGroup;
+			children = (
+				6C4FB30519936AA800084B82 /* SHSAnnouncementsView.h */,
+				6C4FB30619936AA800084B82 /* SHSAnnouncementsView.m */,
+				6C4FB30819936AB500084B82 /* SHSCalendarView.h */,
+				6C4FB30919936AB500084B82 /* SHSCalendarView.m */,
+				6C6E5B6519930FBA00B26782 /* SHSHomeViewController.h */,
+				6C6E5B6619930FBA00B26782 /* SHSHomeViewController.m */,
+			);
+			name = "Home Tab";
 			sourceTree = "<group>";
 		};
 		6C6E5B21199301FE00B26782 = {
@@ -161,14 +183,8 @@
 				6C6E5B3C199301FE00B26782 /* SHSAppDelegate.h */,
 				6C6E5B3D199301FE00B26782 /* SHSAppDelegate.m */,
 				6C6E5B3F199301FE00B26782 /* Main.storyboard */,
-				6C4FB30519936AA800084B82 /* SHSAnnouncementsView.h */,
-				6C4FB30619936AA800084B82 /* SHSAnnouncementsView.m */,
-				6C4FB30819936AB500084B82 /* SHSCalendarView.h */,
-				6C4FB30919936AB500084B82 /* SHSCalendarView.m */,
-				6C6E5B6519930FBA00B26782 /* SHSHomeViewController.h */,
-				6C6E5B6619930FBA00B26782 /* SHSHomeViewController.m */,
-				6C6E5B6819932AFC00B26782 /* SHSBellScheduleViewController.h */,
-				6C6E5B6919932AFC00B26782 /* SHSBellScheduleViewController.m */,
+				6C4FB3D219941C3600084B82 /* Home Tab */,
+				6C14ADD3199453FF0070405D /* Bell Tab */,
 				6C6E5B6B19932D6100B26782 /* SHSMeViewController.h */,
 				6C6E5B6C19932D6100B26782 /* SHSMeViewController.m */,
 				6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */,

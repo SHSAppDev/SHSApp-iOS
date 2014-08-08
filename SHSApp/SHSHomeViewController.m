@@ -17,7 +17,6 @@
     NSArray *itemArray = [NSArray arrayWithObjects: @"Announcements", @"Calendar",  nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     segmentedControl.frame = CGRectMake(85,25,150,30);
-    segmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
     [segmentedControl addTarget:self action:@selector(changeView:)
                forControlEvents:UIControlEventValueChanged];
     

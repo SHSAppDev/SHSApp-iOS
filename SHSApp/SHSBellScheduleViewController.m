@@ -12,7 +12,10 @@
 
 @end
 
-@implementation SHSBellScheduleViewController
+@implementation SHSBellScheduleViewController{
+    NSString *dayName;
+}
+@synthesize tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,95 +37,152 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)changeView: (id)sender{
+    UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
+    NSInteger selectedSegment = segmentedControl.selectedSegmentIndex;
+    
+    if (selectedSegment == 0) {
+        self.parseClassName = @"Monday";
+        [self loadObjects];
+        [self.tableView reloadData];
+    } else if (selectedSegment == 1) {
+        self.parseClassName = @"Thursday";
+        [self loadObjects];
+        [self.tableView reloadData];
+    } else if (selectedSegment == 2) {
+        self.parseClassName = @"Wednesday";
+        [self loadObjects];
+        [self.tableView reloadData];
+    } else if(selectedSegment == 3) {
+        self.parseClassName = @"Thursday";
+        [self loadObjects];
+        [self.tableView reloadData];
+    } else if (selectedSegment == 4) {
+        self.parseClassName = @"Friday";
+        [self loadObjects];
+        [self.tableView reloadData];
+    }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+- (void)viewWillAppear:(BOOL)animated
 {
-    return 1;
+    [super viewDidAppear:animated];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"M", @"T", @"W", @"TH", @"F", nil];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
+    segmentedControl.frame = CGRectMake(85,25,150,30);
+    [segmentedControl addTarget:self action:@selector(changeView:)
+               forControlEvents:UIControlEventValueChanged];
+    
+    [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
+    
+    NSDate *today = [NSDate date];
+    NSDateFormatter *numFormatter = [[NSDateFormatter alloc] init];
+    [numFormatter setDateFormat:@"c"]; // day number, like 7 for saturday
+    NSString *dayOfWeekNum = [numFormatter stringFromDate:today];
+    
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"EEEE"];
+    dayName = [dayFormatter stringFromDate:today];
+    if([dayOfWeekNum isEqualToString:@"7"] || [dayOfWeekNum isEqualToString:@"6"]){
+        segmentedControl.selectedSegmentIndex = 0;
+        dayName = @"Monday";
+    } else {
+        segmentedControl.selectedSegmentIndex = [dayOfWeekNum intValue]-2;
+    }
+    self.parseClassName = dayName;
+    
+    self.navigationItem.titleView = segmentedControl;
+    [self.tableView reloadData];
+
+    [self loadObjects];
+    
 }
 
-- (NSInteger)tableView:(UITableView*)table numberOfRowsInSection:(NSInteger)section
+- (id)initWithCoder:(NSCoder *)aCoder
 {
-    // This is the number of chat messages.
-    return 19;
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // The className to query on
+        self.parseClassName = dayName;
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = NO;
+        
+    }
+    return self;
 }
+
+- (PFQuery *)queryForTable
+{
+    if(self.parseClassName){
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    [query orderByAscending:@"endTime"];
+    
+    return query;
+    }
+    return nil;
+}
+
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    [self.tableView reloadData];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (self.objects.count > 0) {
+        return self.objects.count;
+    }
+    return 0;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    //Get a reference to your string to base the cell size on.
-//    NSString *bodyString;
-//    
-//    bodyString = [self.chat objectAtIndex:indexPath.row][@"message"];
-//    
-//    //set the desired size of your textbox
-//    CGSize constraint = CGSizeMake(252, MAXFLOAT);
-//    
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:14.0] forKey:NSFontAttributeName];
-//    CGRect textsize = [bodyString boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-//    //calculate your size
-//    float textHeight = textsize.size.height + 5;
-//    
-//   return textHeight + 25;
-    return 50;
+    if(indexPath.row == 0){
+        return 43;
+    } else {
+        return (self.view.frame.size.height - 64 - 44 - 44)/(self.objects.count-1);
+    }
 }
 
-- (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
-    
+    if(indexPath.row == 0){
+        static NSString *simpleTableIdentifier = @"TimeLeftCell";
         
-        static NSString *CellIdentifier = @"ChatCell";
-        UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:CellIdentifier];
-        //
-        //    if(indexPath.row % 2 == 0)
-        //        cell.backgroundColor = [UIColor colorWithRed:189.0/255.0 green:195.0/255.0 blue:199.0/255.0 alpha:0.02];
-        //    else
-        //        cell.backgroundColor = [UIColor colorWithRed:189.0/255.0 green:195.0/255.0 blue:199.0/255.0 alpha:0.08];
-        //
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
-        //
-        //    NSDictionary* chatMessage = [self.chat objectAtIndex:indexPath.row];
-        //
-        //    UIImageView *imageView = (UIImageView*) [cell viewWithTag:100];
-        //    imageView.clipsToBounds = YES;
-        //    imageView.contentMode = UIViewContentModeScaleAspectFill;
-        //    imageView.layer.cornerRadius = imageView.frame.size.width / 2;
-        //
-        //
-        //
-        //    [imageView setImageWithURL:[NSURL URLWithString:chatMessage[@"image"]] placeholderImage:[UIImage imageNamed:@"placeholderIcon.png"]];
-        //
-        //
-        //    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
-        //    nameLabel.text = chatMessage[@"user"];
-        //
-        //
-        //    UILabel *messageLabel = (UILabel*) [cell viewWithTag:102];
-        //
-        //    NSString *message = chatMessage[@"message"];
-        //
-        //    CGSize constraint = CGSizeMake(252, MAXFLOAT);
-        //    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:14.0] forKey:NSFontAttributeName];
-        //    CGRect newFrame = [message boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-        //    messageLabel.frame = CGRectMake(57,22,newFrame.size.width, newFrame.size.height);
-        //    messageLabel.text = message;
-        //    [messageLabel sizeToFit];
+        
+        UILabel *titleLabel = (UILabel*) [cell viewWithTag:101];
+        titleLabel.backgroundColor = [UIColor colorWithRed:194/255.0f green:0 blue:0 alpha:0.6];
+        titleLabel.text = @"X Minutes Left";
+        return cell;
+        
+    } else {
+        
+        static NSString *simpleTableIdentifier = @"PeriodCell";
+        
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        }
+        
+        UILabel *periodLabel = (UILabel*) [cell viewWithTag:100];
+        periodLabel.text = [object objectForKey:@"period"];
+        
+        UILabel *timeLabel = (UILabel*) [cell viewWithTag:101];
+        timeLabel.text = [object objectForKey:@"time"];
         
         return cell;
     }
+}
+
 
 
 @end
