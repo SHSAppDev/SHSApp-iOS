@@ -7,6 +7,7 @@
 //
 
 #import "SHSMeViewController.h"
+#import "SVWebViewController.h"
 
 @interface SHSMeViewController ()
 
@@ -27,6 +28,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:@"http://google.com"];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

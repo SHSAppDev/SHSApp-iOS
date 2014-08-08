@@ -7,6 +7,7 @@
 //
 
 #import "SHSDirectoryViewController.h"
+#import "SHSStaffTableViewCell.h"
 
 @interface SHSDirectoryViewController ()
 
@@ -26,105 +27,140 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    
+    self.tableView.tableHeaderView = self.searchBar;
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    
+    self.searchController.searchResultsDataSource = self;
+    self.searchController.searchResultsDelegate = self;
+    self.searchController.delegate = self;
+    
+
+    self.searchResults = [NSMutableArray array];}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self loadObjects];
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
-/*
-#pragma mark - Navigation
+-(void)filterResults:(NSString *)searchTerm {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Staff"];
+    [query whereKey:@"Name" containsString:searchTerm];
+    query.limit = 20;
+    
+    [query findObjectsInBackgroundWithTarget:self selector:@selector(callbackWithResult:error:)];
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filterResults:searchString];
+    return YES;
+}
+
+
+- (void)callbackWithResult:(NSArray *)celebrities error:(NSError *)error
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if(!error) {
+        [self.searchResults removeAllObjects];
+        [self.searchResults addObjectsFromArray:celebrities];
+        [self.searchDisplayController.searchResultsTableView reloadData];
+    }
 }
-*/
 
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
+- (id)initWithCoder:(NSCoder *)aCoder
 {
-    return 1;
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // The className to query on
+        self.parseClassName = @"Staff";
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = NO;
+        
+        
+    }
+    return self;
 }
 
-- (NSInteger)tableView:(UITableView*)table numberOfRowsInSection:(NSInteger)section
+- (PFQuery *)queryForTable
 {
-    // This is the number of chat messages.
-    return 19;
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    [query orderByAscending:@"Name"];
+    
+    return query;
 }
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    
+    
+    [self.tableView reloadData];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (tableView == self.tableView) {
+        //if (tableView == self.searchDisplayController.searchResultsTableView) {
+        
+        return self.objects.count;
+        
+    } else {
+        
+        return self.searchResults.count;
+        
+    }
+    
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    //Get a reference to your string to base the cell size on.
-    //    NSString *bodyString;
-    //
-    //    bodyString = [self.chat objectAtIndex:indexPath.row][@"message"];
-    //
-    //    //set the desired size of your textbox
-    //    CGSize constraint = CGSizeMake(252, MAXFLOAT);
-    //
-    //    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:14.0] forKey:NSFontAttributeName];
-    //    CGRect textsize = [bodyString boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-    //    //calculate your size
-    //    float textHeight = textsize.size.height + 5;
-    //
-    //   return textHeight + 25;
-    return 50;
+    return 48;
 }
 
-- (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
+    NSString *uniqueIdentifier = @"StaffCell";
+    SHSStaffTableViewCell *cell = nil;
     
-    static NSString *CellIdentifier = @"ChatCell";
-    UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:CellIdentifier];
-    //
-    //    if(indexPath.row % 2 == 0)
-    //        cell.backgroundColor = [UIColor colorWithRed:189.0/255.0 green:195.0/255.0 blue:199.0/255.0 alpha:0.02];
-    //    else
-    //        cell.backgroundColor = [UIColor colorWithRed:189.0/255.0 green:195.0/255.0 blue:199.0/255.0 alpha:0.08];
-    //
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        }
-    //
-    //    NSDictionary* chatMessage = [self.chat objectAtIndex:indexPath.row];
-    //
-    //    UIImageView *imageView = (UIImageView*) [cell viewWithTag:100];
-    //    imageView.clipsToBounds = YES;
-    //    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    //    imageView.layer.cornerRadius = imageView.frame.size.width / 2;
-    //
-    //
-    //
-    //    [imageView setImageWithURL:[NSURL URLWithString:chatMessage[@"image"]] placeholderImage:[UIImage imageNamed:@"placeholderIcon.png"]];
-    //
-    //
-    //    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
-    //    nameLabel.text = chatMessage[@"user"];
-    //
-    //
-    //    UILabel *messageLabel = (UILabel*) [cell viewWithTag:102];
-    //
-    //    NSString *message = chatMessage[@"message"];
-    //
-    //    CGSize constraint = CGSizeMake(252, MAXFLOAT);
-    //    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:14.0] forKey:NSFontAttributeName];
-    //    CGRect newFrame = [message boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-    //    messageLabel.frame = CGRectMake(57,22,newFrame.size.width, newFrame.size.height);
-    //    messageLabel.text = message;
-    //    [messageLabel sizeToFit];
+    cell = (SHSStaffTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:uniqueIdentifier];
     
+    if (cell == nil) {
+        
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SHSStaffTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        
+    }
+
+   
+    if (tableView != self.searchDisplayController.searchResultsTableView) {
+       // cell.nameLabel.text = [object objectForKey:@"Name"];
+        cell.typeLabel.text = [object objectForKey:@"Type"];
+
+    }
+    if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        
+        PFObject *obj2 = [self.searchResults objectAtIndex:indexPath.row];
+      //  cell.nameLabel.text = [obj2 objectForKey:@"Name"];
+        cell.typeLabel.text = [obj2 objectForKey:@"Type"];
+
+    }
     return cell;
 }
-
-
-
-
 
 @end

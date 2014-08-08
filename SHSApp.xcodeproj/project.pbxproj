@@ -16,6 +16,8 @@
 		6C4FB325199373E500084B82 /* meTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4FB321199373E500084B82 /* meTab@2x.png */; };
 		6C4FB3291993749200084B82 /* homeTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C4FB3281993749200084B82 /* homeTab@2x.png */; };
 		6C4FB32F1993755800084B82 /* SHSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4FB32E1993755800084B82 /* SHSNewsViewController.m */; };
+		6C50F6E51994AA4E008CB51D /* SHSStaffTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C50F6E31994AA4E008CB51D /* SHSStaffTableViewCell.m */; };
+		6C50F6E61994AA4E008CB51D /* SHSStaffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C50F6E41994AA4E008CB51D /* SHSStaffTableViewCell.xib */; };
 		6C6E5B2E199301FE00B26782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6E5B2D199301FE00B26782 /* Foundation.framework */; };
 		6C6E5B30199301FE00B26782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6E5B2F199301FE00B26782 /* CoreGraphics.framework */; };
 		6C6E5B32199301FE00B26782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C6E5B31199301FE00B26782 /* UIKit.framework */; };
@@ -57,6 +59,9 @@
 		6C4FB3281993749200084B82 /* homeTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeTab@2x.png"; sourceTree = "<group>"; };
 		6C4FB32D1993755800084B82 /* SHSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSNewsViewController.h; sourceTree = "<group>"; };
 		6C4FB32E1993755800084B82 /* SHSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSNewsViewController.m; sourceTree = "<group>"; };
+		6C50F6E21994AA4E008CB51D /* SHSStaffTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSStaffTableViewCell.h; sourceTree = "<group>"; };
+		6C50F6E31994AA4E008CB51D /* SHSStaffTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSStaffTableViewCell.m; sourceTree = "<group>"; };
+		6C50F6E41994AA4E008CB51D /* SHSStaffTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSStaffTableViewCell.xib; sourceTree = "<group>"; };
 		6C6E5B2A199301FE00B26782 /* SHSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C6E5B2D199301FE00B26782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6C6E5B2F199301FE00B26782 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +150,16 @@
 			name = "Home Tab";
 			sourceTree = "<group>";
 		};
+		6C50F6E71994AA54008CB51D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C50F6E21994AA4E008CB51D /* SHSStaffTableViewCell.h */,
+				6C50F6E31994AA4E008CB51D /* SHSStaffTableViewCell.m */,
+				6C50F6E41994AA4E008CB51D /* SHSStaffTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6C6E5B21199301FE00B26782 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +204,7 @@
 				6C6E5B6C19932D6100B26782 /* SHSMeViewController.m */,
 				6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */,
 				6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */,
+				6C50F6E71994AA54008CB51D /* View */,
 				6C4FB32D1993755800084B82 /* SHSNewsViewController.h */,
 				6C4FB32E1993755800084B82 /* SHSNewsViewController.m */,
 				6C4FB3191993722100084B82 /* assets */,
@@ -312,6 +328,7 @@
 				6C4FB3291993749200084B82 /* homeTab@2x.png in Resources */,
 				6C6E5B41199301FE00B26782 /* Main.storyboard in Resources */,
 				6C4FB322199373E500084B82 /* bellTab@2x.png in Resources */,
+				6C50F6E61994AA4E008CB51D /* SHSStaffTableViewCell.xib in Resources */,
 				6C4FB323199373E500084B82 /* directoryTab@2x.png in Resources */,
 				6C4FB31D1993731500084B82 /* newsTab@2x.png in Resources */,
 			);
@@ -372,6 +389,7 @@
 				6C6E5B3E199301FE00B26782 /* SHSAppDelegate.m in Sources */,
 				6C6E5B6A19932AFC00B26782 /* SHSBellScheduleViewController.m in Sources */,
 				6C6E5B6D19932D6100B26782 /* SHSMeViewController.m in Sources */,
+				6C50F6E51994AA4E008CB51D /* SHSStaffTableViewCell.m in Sources */,
 				6C6E5B7019932DB300B26782 /* SHSDirectoryViewController.m in Sources */,
 				6C4FB32F1993755800084B82 /* SHSNewsViewController.m in Sources */,
 			);

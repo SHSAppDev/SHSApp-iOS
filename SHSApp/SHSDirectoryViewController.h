@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface SHSDirectoryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SHSDirectoryViewController : PFQueryTableViewController <UISearchDisplayDelegate, UISearchBarDelegate> {
+    
+}
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
+@property (nonatomic, strong) NSMutableArray *searchResults;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
