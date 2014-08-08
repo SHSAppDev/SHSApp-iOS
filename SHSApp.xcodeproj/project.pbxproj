@@ -35,6 +35,8 @@
 		6C6E5B7019932DB300B26782 /* SHSDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */; };
 		6CCE26941994B3F100FC4A5B /* SHSDirectoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE26921994B3F100FC4A5B /* SHSDirectoryTableViewCell.m */; };
 		6CCE26951994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCE26931994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib */; };
+		6CCE26971994B86C00FC4A5B /* blank_profile_public@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CCE26961994B86C00FC4A5B /* blank_profile_public@2x.png */; };
+		6CCE269A1994B93600FC4A5B /* SHSStaffDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE26991994B93600FC4A5B /* SHSStaffDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,9 @@
 		6CCE26911994B3F100FC4A5B /* SHSDirectoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSDirectoryTableViewCell.h; sourceTree = "<group>"; };
 		6CCE26921994B3F100FC4A5B /* SHSDirectoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSDirectoryTableViewCell.m; sourceTree = "<group>"; };
 		6CCE26931994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSDirectoryTableViewCell.xib; sourceTree = "<group>"; };
+		6CCE26961994B86C00FC4A5B /* blank_profile_public@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank_profile_public@2x.png"; sourceTree = "<group>"; };
+		6CCE26981994B93600FC4A5B /* SHSStaffDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSStaffDetailViewController.h; sourceTree = "<group>"; };
+		6CCE26991994B93600FC4A5B /* SHSStaffDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSStaffDetailViewController.m; sourceTree = "<group>"; };
 		C1211A730D5B476EBA19EDFF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DB8D8A52036F44619AD97A0C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -202,8 +207,7 @@
 				6C14ADD3199453FF0070405D /* Bell Tab */,
 				6C6E5B6B19932D6100B26782 /* SHSMeViewController.h */,
 				6C6E5B6C19932D6100B26782 /* SHSMeViewController.m */,
-				6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */,
-				6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */,
+				6CCE269B1994B93E00FC4A5B /* Directory */,
 				6C50F6E71994AA54008CB51D /* View */,
 				6C4FB32D1993755800084B82 /* SHSNewsViewController.h */,
 				6C4FB32E1993755800084B82 /* SHSNewsViewController.m */,
@@ -217,6 +221,7 @@
 		6C6E5B34199301FE00B26782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6CCE26961994B86C00FC4A5B /* blank_profile_public@2x.png */,
 				6C6E5B35199301FE00B26782 /* SHSApp-Info.plist */,
 				6C6E5B36199301FE00B26782 /* InfoPlist.strings */,
 				6C6E5B39199301FE00B26782 /* main.m */,
@@ -241,6 +246,17 @@
 				6C6E5B58199301FE00B26782 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6CCE269B1994B93E00FC4A5B /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				6C6E5B6E19932DB300B26782 /* SHSDirectoryViewController.h */,
+				6C6E5B6F19932DB300B26782 /* SHSDirectoryViewController.m */,
+				6CCE26981994B93600FC4A5B /* SHSStaffDetailViewController.h */,
+				6CCE26991994B93600FC4A5B /* SHSStaffDetailViewController.m */,
+			);
+			name = Directory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +340,7 @@
 			files = (
 				6CCE26951994B3F100FC4A5B /* SHSDirectoryTableViewCell.xib in Resources */,
 				6C6E5B49199301FE00B26782 /* Images.xcassets in Resources */,
+				6CCE26971994B86C00FC4A5B /* blank_profile_public@2x.png in Resources */,
 				6C6E5B38199301FE00B26782 /* InfoPlist.strings in Resources */,
 				6C4FB325199373E500084B82 /* meTab@2x.png in Resources */,
 				6C4FB3291993749200084B82 /* homeTab@2x.png in Resources */,
@@ -391,6 +408,7 @@
 				6C6E5B6A19932AFC00B26782 /* SHSBellScheduleViewController.m in Sources */,
 				6C6E5B6D19932D6100B26782 /* SHSMeViewController.m in Sources */,
 				6C6E5B7019932DB300B26782 /* SHSDirectoryViewController.m in Sources */,
+				6CCE269A1994B93600FC4A5B /* SHSStaffDetailViewController.m in Sources */,
 				6C4FB32F1993755800084B82 /* SHSNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

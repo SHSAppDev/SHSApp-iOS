@@ -75,11 +75,11 @@
 }
 
 
-- (void)callbackWithResult:(NSArray *)celebrities error:(NSError *)error
+- (void)callbackWithResult:(NSArray *)teachers error:(NSError *)error
 {
     if(!error) {
         [self.searchResults removeAllObjects];
-        [self.searchResults addObjectsFromArray:celebrities];
+        [self.searchResults addObjectsFromArray:teachers];
         [self.searchDisplayController.searchResultsTableView reloadData];
     }
 }
@@ -90,7 +90,7 @@
     if (self) {
         // The className to query on
         self.parseClassName = @"Staff";
-        self.pullToRefreshEnabled = YES;
+        self.pullToRefreshEnabled = NO;
         self.paginationEnabled = NO;
         
         
@@ -101,6 +101,7 @@
 - (PFQuery *)queryForTable
 {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    query.limit = 1000;
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     
     [query orderByAscending:@"Name"];
@@ -110,8 +111,7 @@
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
-    
-    
+
     [self.tableView reloadData];
 }
 
