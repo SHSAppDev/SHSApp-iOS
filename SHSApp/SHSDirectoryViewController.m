@@ -7,7 +7,7 @@
 //
 
 #import "SHSDirectoryViewController.h"
-#import "SHSStaffTableViewCell.h"
+#import "SHSDirectoryTableViewCell.h"
 
 @interface SHSDirectoryViewController ()
 
@@ -27,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.separatorInset = UIEdgeInsetsZero;
+
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     
     self.tableView.tableHeaderView = self.searchBar;
@@ -135,28 +137,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
-    NSString *uniqueIdentifier = @"StaffCell";
-    SHSStaffTableViewCell *cell = nil;
+    NSString *uniqueIdentifier = @"DirectoryCell";
+    SHSDirectoryTableViewCell *cell = nil;
     
-    cell = (SHSStaffTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:uniqueIdentifier];
+    cell = (SHSDirectoryTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:uniqueIdentifier];
     
     if (cell == nil) {
         
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SHSStaffTableViewCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SHSDirectoryTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         
     }
-
    
     if (tableView != self.searchDisplayController.searchResultsTableView) {
-       // cell.nameLabel.text = [object objectForKey:@"Name"];
+        cell.nameLabel.text = [object objectForKey:@"Name"];
         cell.typeLabel.text = [object objectForKey:@"Type"];
 
     }
     if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
         
         PFObject *obj2 = [self.searchResults objectAtIndex:indexPath.row];
-      //  cell.nameLabel.text = [obj2 objectForKey:@"Name"];
+        cell.nameLabel.text = [obj2 objectForKey:@"Name"];
         cell.typeLabel.text = [obj2 objectForKey:@"Type"];
 
     }

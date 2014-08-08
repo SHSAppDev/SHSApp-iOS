@@ -1,14 +1,14 @@
 //
-//  SHSStaffTableViewCell.m
+//  SHSDirectoryTableViewCell.m
 //  SHSApp
 //
-//  Created by Spencer Yen on 8/7/14.
+//  Created by Spencer Yen on 8/8/14.
 //  Copyright (c) 2014 Spencer Yen. All rights reserved.
 //
 
-#import "SHSStaffTableViewCell.h"
+#import "SHSDirectoryTableViewCell.h"
 
-@implementation SHSStaffTableViewCell
+@implementation SHSDirectoryTableViewCell
 @synthesize nameLabel = _nameLabel;
 @synthesize typeLabel = _typeLabel;
 - (void)awakeFromNib
