@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SVWebViewController.h"
+#import <Parse/Parse.h>
 
 @interface SHSStaffDetailViewController : UIViewController
 
-@property (nonatomic, strong) NSDictionary *staffInfo;
+@property (nonatomic, strong) PFObject *staffInfo;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *callButton;
 @property (weak, nonatomic) IBOutlet UIButton *emailButton;
 - (IBAction)emailAction:(id)sender;
 - (IBAction)callAction:(id)sender;

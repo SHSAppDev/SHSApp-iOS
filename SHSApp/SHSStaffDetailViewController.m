@@ -7,8 +7,9 @@
 //
 
 #import "SHSStaffDetailViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SHSStaffDetailViewController ()
+@interface SHSStaffDetailViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -26,7 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = [_staffInfo objectForKey:@"Type"];
+    _nameLabel.text = [_staffInfo objectForKey:@"Name"];
+    [_emailButton setTitle:[NSString stringWithFormat:@"Email: %@",[_staffInfo objectForKey:@"Email"]] forState:UIControlStateNormal];
+    [_callButton setTitle:[NSString stringWithFormat:@"Call Extension: %@",[_staffInfo objectForKey:@"Extension"]] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,23 +39,51 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)emailAction:(id)sender {
+    NSString *emailTitle = @"Hi!";
+    NSString *messageBody = [NSString stringWithFormat:@"Hi %@,", [_staffInfo objectForKey:@"Name"]];
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:emailTitle];
+    [mc setMessageBody:messageBody isHTML:NO];
+    [mc setToRecipients:@[[_staffInfo objectForKey:@"Email"]]];
+    
+    [self presentViewController:mc animated:YES completion:NULL];
 }
 
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 - (IBAction)callAction:(id)sender {
+    NSString *phoneNumber = [@"tel://" stringByAppendingString:[NSString stringWithFormat:@"14088673411"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 
 - (IBAction)websiteAction:(id)sender {
+    
+    SVWebViewController *webViewController = [[SVWebViewController alloc] initWithAddress:[_staffInfo objectForKey:@"Website"]];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 @end

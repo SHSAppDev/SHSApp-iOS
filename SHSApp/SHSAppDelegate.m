@@ -23,6 +23,10 @@
     {
         [[UINavigationBar appearance] setBarTintColor: [UIColor colorWithRed:207/255.0 green:0/255.0 blue:15/255.0 alpha:1.0]];
     }
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                                            [UIFont boldSystemFontOfSize:18.0], NSFontAttributeName, nil]];

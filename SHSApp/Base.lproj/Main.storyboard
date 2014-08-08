@@ -41,7 +41,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Directory" id="qdy-Pm-X4l"/>
                     <connections>
-                        <segue destination="T2h-t4-8Yl" kind="push" identifier="pushStaffDetail" id="6cP-vi-9gB"/>
+                        <segue destination="T2h-t4-8Yl" kind="push" identifier="PushStaffDetail" id="6cP-vi-9gB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0x-Nd-odC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n8D-YY-NJn">
-                                <rect key="frame" x="41" y="317" width="238" height="46"/>
+                                <rect key="frame" x="15" y="317" width="285" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.76231751820000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
@@ -81,11 +81,11 @@
                                 </connections>
                             </button>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VzL-Pt-eFJ">
-                                <rect key="frame" x="41" y="379" width="238" height="46"/>
+                                <rect key="frame" x="15" y="380" width="285" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.76231751820000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
-                                <state key="normal" title="Call">
+                                <state key="normal" title="Call:">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -94,7 +94,7 @@
                                 </connections>
                             </button>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ied-mj-Fbs">
-                                <rect key="frame" x="41" y="442" width="238" height="46"/>
+                                <rect key="frame" x="15" y="443" width="285" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.76231751820000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="15"/>
@@ -111,6 +111,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Teacher" id="aIo-0h-wWf"/>
                     <connections>
+                        <outlet property="callButton" destination="VzL-Pt-eFJ" id="45o-vz-PVi"/>
                         <outlet property="emailButton" destination="n8D-YY-NJn" id="bNT-eW-kP5"/>
                         <outlet property="nameLabel" destination="LXM-gB-IuP" id="mA8-Pg-3NP"/>
                         <outlet property="profileImageView" destination="so5-xf-60P" id="qgk-mT-bQN"/>

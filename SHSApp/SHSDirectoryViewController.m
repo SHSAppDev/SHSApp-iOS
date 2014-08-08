@@ -8,12 +8,14 @@
 
 #import "SHSDirectoryViewController.h"
 #import "SHSDirectoryTableViewCell.h"
-
+#import "SHSStaffDetailViewController.h"
 @interface SHSDirectoryViewController ()
 
 @end
 
-@implementation SHSDirectoryViewController
+@implementation SHSDirectoryViewController {
+    PFObject *selectedStaff;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -162,6 +164,29 @@
 
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView != self.searchDisplayController.searchResultsTableView) {
+        selectedStaff = [self.objects objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"PushStaffDetail" sender:self];
+    }
+    if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        
+        selectedStaff = [self.searchResults objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"PushStaffDetail" sender:self];
+
+        
+    }
+}
+
+ #pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SHSStaffDetailViewController *detail = [segue destinationViewController];
+    detail.staffInfo = selectedStaff;
+    
 }
 
 @end
