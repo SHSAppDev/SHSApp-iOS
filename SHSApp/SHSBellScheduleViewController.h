@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 @interface SHSBellScheduleViewController : PFQueryTableViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    int segment;
+}
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

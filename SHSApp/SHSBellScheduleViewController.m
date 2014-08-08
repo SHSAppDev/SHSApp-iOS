@@ -15,7 +15,7 @@
 @implementation SHSBellScheduleViewController{
     NSString *dayName;
 }
-@synthesize tableView;
+@synthesize tableView, timerLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +29,60 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    tableView.tableHeaderView = timerLabel;
+    segment = 0;
+    [self getEndTime];
     
 }
+
+-(void) updateCounter:(NSTimer *)theTimer {
+    
+}
+-(void) displayTimer {
+    
+    
+}
+
+-(NSDate *) getEndTime {
+    if (segment == 0) {
+        self.parseClassName = @"Monday";
+    } else if (segment == 1) {
+        self.parseClassName = @"Thursday";
+    } else if (segment == 2) {
+        self.parseClassName = @"Wednesday";
+    } else if(segment == 3) {
+        self.parseClassName = @"Thursday";
+    } else if (segment == 4) {
+        self.parseClassName = @"Friday";
+    }
+        
+        PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+        
+        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+        [timeFormatter setDateFormat:@"hhmm"];
+        [timeFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"PST"]];
+        NSString *newTime = [timeFormatter stringFromDate:[NSDate date]];
+        NSNumber *nowInteger= [NSNumber numberWithInt:[newTime intValue]];
+        [query whereKey:@"endTime" greaterThan:nowInteger];
+        [query orderByAscending:@"endTime"];
+        NSNumber *endTime = [[[query findObjects] firstObject] objectForKey:@"endTime"];
+        NSString *dateString;
+        if([endTime intValue] < 999) {
+            dateString = [NSString stringWithFormat:@"0%@", endTime];
+        } else {
+            dateString = [NSString stringWithFormat:@"%@", endTime];
+        }
+    
+    NSDateFormatter *timFormatter = [[NSDateFormatter alloc] init];
+    [timFormatter setDateFormat:@"hhmm"];
+        NSDate *dateFromString = [timFormatter dateFromString:dateString];
+    NSLog(@"%@", endTime);
+    NSLog(@"%@", newTime);
+        NSLog(@"%@", dateFromString);
+     NSLog(@"%@", dateString);
+    
+        return dateFromString;
+    }
 
 - (void)didReceiveMemoryWarning
 {
@@ -62,6 +114,8 @@
         [self loadObjects];
         [self.tableView reloadData];
     }
+    
+    segment = selectedSegment;
 
 }
 
@@ -151,21 +205,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
-    if(indexPath.row == 0){
-        static NSString *simpleTableIdentifier = @"TimeLeftCell";
-        
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-        }
-        
-        UILabel *titleLabel = (UILabel*) [cell viewWithTag:101];
-        titleLabel.backgroundColor = [UIColor colorWithRed:194/255.0f green:0 blue:0 alpha:0.6];
-        titleLabel.text = @"X Minutes Left";
-        return cell;
-        
-    } else {
-        
         static NSString *simpleTableIdentifier = @"PeriodCell";
         
         UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -180,7 +219,6 @@
         timeLabel.text = [object objectForKey:@"time"];
         
         return cell;
-    }
 }
 
 

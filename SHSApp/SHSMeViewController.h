@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IDMPhotoBrowser.h"
 
-@interface SHSMeViewController : UIViewController 
+@interface SHSMeViewController : UIViewController <IDMPhotoBrowserDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIImageView *idImageView;
+@property BOOL newMedia;
+
 @end
